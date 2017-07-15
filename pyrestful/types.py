@@ -1,7 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+# @Author: xiaoyizong <yizongxiao>
+# @Date:   15-07-2017 13:02:40
+# @Email:  xiaoyizong@baidu.com
+# @Filename: types.py
+# @Last modified by:   yizongxiao
+# @Last modified time: 15-07-2017 13:11:20
+# @Copyright: Baidu.inc
+
 import sys
+import ast
 
 boolean = str
 
@@ -29,4 +38,7 @@ def convert(value, type):
         elif str(value).upper() == 'FALSE':
             return False
     else:
-        return value
+        try:
+            return ast.literal_eval(str(value).decode('utf-8'))
+        except:
+            return value
